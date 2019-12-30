@@ -22,12 +22,25 @@ class NewArray {
 
   unshift(input) {
     // O(n)
-    for (let i = this.length; i >= 1; i--) {
-      this.data[i] = this.data[i - 1];
+
+    if (input) {
+      for (let i = this.length; i >= 1; i--) {
+        this.data[i] = this.data[i - 1];
+      }
+      this.length++;
+      this.data[0] = input;
+      console.log("unshift", this);
+    } else {
+      console.log("unshift", this);
     }
-    this.length++;
-    this.data[0] = input;
-    console.log(this);
+  }
+
+  shift() {
+    for (let i = 0; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    this.pop();
+    console.log("pop", this);
   }
 
   pop() {
@@ -35,11 +48,42 @@ class NewArray {
     delete this.data[this.length - 1];
     this.length--;
   }
+
+  splice(start, deleteCount, item1, item2) {
+    //   we are trying to find the starting position inside of the object
+
+    for (let i = start; i < this.length - 1; i++) {
+      this.data[i] = this.data[i + deleteCount];
+    }
+    for (let i = this.length - 1; i >= this.length - 1 - deleteCount; i--) {
+      delete this.data[this.length - 1];
+      this.length--;
+    }
+    console.log(this);
+
+    // let i = 0;
+    // console.log("start", this.data[start]);
+    // if (this.data[start]) {
+    //   while (i !== deleteCount) {
+    //     delete this.data[start + i];
+    //     i++;
+    //     this.length--;
+    //   }
+    //   console.log(this);
+    // }
+  }
 }
 
 const array = new NewArray();
 
 array.push("hello");
 array.push("Khadija");
-array.unshift("Bitches");
-array.unshift("Bitches");
+array.push("hello");
+array.push("Khadija");
+array.unshift("Biatch");
+array.splice(1, 2);
+
+const test = ["hello", "Khadija"];
+
+test.splice(1, 1);
+console.log(test);
