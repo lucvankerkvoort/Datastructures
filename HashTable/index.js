@@ -16,7 +16,7 @@ class Hashtable {
       this.data[address] = [];
     }
     this.data[address].push([key, value]);
-    return this.data;
+    return console.log(this.data);
   }
   get(key) {
     let address = this._hash(key);
@@ -40,7 +40,7 @@ class Hashtable {
   }
 }
 
-const myHashTable = new Hashtable(50);
+const myHashTable = new Hashtable(2);
 myHashTable.set("grapes", 10000);
 myHashTable.set("2grapes", 10000);
 myHashTable.get("grapes");
