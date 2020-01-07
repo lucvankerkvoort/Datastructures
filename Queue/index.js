@@ -31,6 +31,12 @@ class Queue {
   }
 
   dequeue() {
+    if(!this.first){
+      return null
+    }
+    if(this.first === this.last){
+      this.last = null;
+    } 
     let currentFirst = this.first;
     this.first = this.first.next;
     this.length--
