@@ -33,6 +33,7 @@ class Queue {
   dequeue() {
     let currentFirst = this.first;
     this.first = this.first.next;
+    this.length--
     console.log(currentFirst);
   }
 }
